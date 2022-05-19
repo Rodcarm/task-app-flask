@@ -1,0 +1,32 @@
+{% extends 'bootstrap/base.html'%}
+{%block head%}
+    {{super()}}
+    <title>
+        {% block title %}TASKAPP| {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    
+{% endblock%}
+    
+    
+{% block body %}
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock%} 
+
+    {% for message in get_flashed_messages()%}
+        <div class="alert alert-success alert-dimissible">
+            <button type="button" 
+                    data-dismiss="alert"
+                    class="close">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {%block content%}{% endblock%}
+    {% block scripts %}
+        {{super()}}
+    {% endblock %}
+{% endblock %}

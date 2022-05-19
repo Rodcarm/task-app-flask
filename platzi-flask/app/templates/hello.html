@@ -1,0 +1,50 @@
+{% extends 'base.html' %}}
+{% import 'macros.html' as macros%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}
+    {{super()}}
+    Bienvenido
+{% endblock %}
+
+{% block content%}
+    {% if username%}
+        <div class="container header_name text-center">
+            <section class="container section_name">
+            <img src="../static/images/think.jpg" alt="image" class="image">
+            <h4>Bienvenido, {{username | capitalize }}</h4>
+            </section>
+        </div>
+    {% endif %}
+    
+    <div class="container newtask">
+        <h2>Crea una nueva tarea</h2>
+
+        {{wtf.quick_form(todo_form)}}
+    </div>
+
+    <div class="container listask">
+        <h2>Mi lista de tareas</h2>
+    <ul class = "list-group">
+        <div class="row">
+            <div class="col-lg-3 text-center col-md-3 col-sm-3 col-xs-3">
+                <h6>Actividad</h6>
+            </div>
+            <div class="col-lg-3 text-center col-md-3 col-sm-3 col-xs-3">
+                <h6>¿Concluida?</h6>
+            </div>
+            <div class="col-lg-3 text-center col-md-3 col-sm-3 col-xs-3">
+                <h6>Cambio del estado de la actividad</h6>
+            </div>
+            <div class="col-lg-3 text-center col-md-3 col-sm-3  col-xs-3">
+                <h6>Eliminar actividad</h6>
+            </div>
+        </div>
+
+    <ul class="list-group">
+        {% for todo in todos %}
+            {{macros.render_todo(todo,delete_form,update_form)}}
+        {% endfor %}
+    </ul>
+{%endblock%}
+

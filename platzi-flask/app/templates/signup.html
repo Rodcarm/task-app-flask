@@ -1,0 +1,23 @@
+{% extends 'base.html' %}}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block title %}
+    {{ super()}}
+    Signup
+{% endblock %}
+{% block content%}
+    <div class="container signup">
+        <div class="row">
+            <h2>Que ninguna actividad se quede pendiente</h2><br>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 text-center">
+                <img src="../static/images/cat3.jpg" alt="image" width="400px" height="400px">
+            </div>
+            <div class ="col-lg-6">
+                <h1>Registra una cuenta</h1>
+                {{wtf.quick_form(signup_form)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
