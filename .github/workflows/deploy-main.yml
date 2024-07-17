@@ -1,0 +1,21 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v3
+
+      - name: Set up git
+        run: |
+          git config --global user.name Rodrigo 
+          git config --global user.email rcarmona@realmetrics.io
+      - name: Add Remote
+        run: git remote add backup https://${{ secrets.GITHUB_TOKEN }}@github.com/Rodcarm/gitAccionTest.git
+      - name: Push to backup
+        run: git push backup +refs/heads/main:refs/heads/main
