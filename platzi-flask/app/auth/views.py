@@ -37,7 +37,7 @@ def login():
         else:
             flash('El usuario no existe')
 
-        return redirect(url_for('index'))
+        return redirect(url_for('inde'))
 
     return render_template('login.html',**context)
 
