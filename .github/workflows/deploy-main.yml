@@ -31,6 +31,9 @@ jobs:
         run: |
           git checkout new-main
           git merge gitAccionTest/new-main || echo "No changes to merge"
+      - name: Pull
+        run: |
+          git pull
       - name: Stage and Commit Changes
         run: |
           git add -A
