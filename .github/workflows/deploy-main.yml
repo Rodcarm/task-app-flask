@@ -15,7 +15,7 @@ jobs:
           depth: 1
           branch: new-main
           owner: 'Rodcarm'
-          repository: 'Rodcarm/gitAccionTest'
+          repository: 'gitAccionTest'
       - name: Access cloned repository contents
         run: |
           git config --global user.name Rodrigo 
