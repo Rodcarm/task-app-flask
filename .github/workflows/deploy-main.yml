@@ -26,7 +26,7 @@ jobs:
       - name: Pull Changes from gitAccionTest
         run: |
           git fetch gitAccionTest
-          git merge gitAccionTest/new-main || echo "No changes to merge"
+          git rebase gitAccionTest/new-main || echo "No changes to merge"
       - name: Stage and Commit Changes
         run: |
           git add -A
