@@ -24,9 +24,10 @@ jobs:
         run: |
           git remote add gitAccionTest https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
       
-      - name: Fetch and Rebase Changes from gitAccionTest
+      - name: Fetch and Merge Changes from gitAccionTest
         run: |
-          git pull
+          git fetch gitAccionTest
+          git merge gitAccionTest/new-main || echo "No changes to merge"
       - name: Stage and Commit Changes
         run: |
           git add -A
@@ -39,4 +40,4 @@ jobs:
           git remote -v
       - name: Push to gitAccionTest
         run: |
-          git push gitAccionTest new-main
+          git push gitAccionTest new-main --force
