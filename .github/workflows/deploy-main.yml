@@ -38,6 +38,10 @@ jobs:
       - name: remote
         run: |
           git remote -v
+      - name: Clean and Compress Local Repository
+        run: |
+          git gc --prune=now
+          git repack -a -d --depth=250 --window=250
       - name: Push to gitAccionTest
         run: |
           git push gitAccionTest new-main --force
