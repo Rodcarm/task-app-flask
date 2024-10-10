@@ -19,6 +19,8 @@ jobs:
         env:
           TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
+          git branch
+          git branch -r
           git checkout test
           git merge new-main
           git commit -am "cambios en test"
