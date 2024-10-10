@@ -4,7 +4,7 @@ on:
     branches:
       - new-main
 jobs:
-  sync:
+  update-file:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,6 +22,7 @@ jobs:
           git config --global user.email rcarmona@realmetrics.io
           git add -A
           git commit -m "Update All"
-      - name: |
+      - name: Push Changes
+        run: |
           git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
           git push
