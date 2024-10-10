@@ -22,4 +22,5 @@ jobs:
         env:
           TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
+          git remote add origin https://github.com/Rodcarm/gitAccionTest.git
           git push https://$TOKEN@github.com/Rodcarm/gitAccionTest.git
