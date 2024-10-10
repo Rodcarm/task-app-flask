@@ -31,7 +31,12 @@ jobs:
         run: |
           git add -A
           git commit -m "Update All" || echo "No changes to commit"
-          
+      - name: branch
+        run: |
+          git branch
+      - name: remote
+        run: |
+          git remote -v
       - name: Push to gitAccionTest
         run: |
           git push gitAccionTest new-main
