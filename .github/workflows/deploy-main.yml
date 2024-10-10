@@ -1,31 +1,29 @@
 name: Deploy
+
 on:
   push:
     branches:
-      - new-main
+      - main  # Cambia esto si tu rama principal tiene otro nombre (como new-main)
+
 jobs:
-  update-file:
+  sync:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: write
+      contents: write  # Permite escribir en el repositorio
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          repository: 'Rodcarm/gitAccionTest' # Correct repository reference
-          token: ${{ secrets.API_TOKEN_GITHUB }}
-          ref: new-main
-          
-      - name: Set up Git Configuration
+
+      - name: Configure Git
         run: |
-          git config --global user.name "Rodrigo" 
+          git config --global user.name "Rodrigo"
           git config --global user.email "rcarmona@realmetrics.io"
-          
-      - name: Stage and Commit Changes
+
+      - name: Push to gitAccionTest
         run: |
+          git remote add gitAccionTest https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
           git add -A
-          git commit -m "Update All" || echo "No changes to commit"
-          
-      - name: Push changes
-        run: |
-          git push
+          git commit -m "Sync from task-app-flask" || echo "No changes to commit"
+          git push gitAccionTest main  # Cambia "main" si tu rama en gitAccionTest tiene otro nombre
