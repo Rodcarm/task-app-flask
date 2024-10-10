@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - main  # Cambia esto si tu rama principal tiene otro nombre (como new-main)
+      - new-main  # Cambia esto si tu rama principal tiene otro nombre (como new-main)
 
 jobs:
   sync:
@@ -26,4 +26,4 @@ jobs:
           git remote add gitAccionTest https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
           git add -A
           git commit -m "Sync from task-app-flask" || echo "No changes to commit"
-          git push gitAccionTest main  # Cambia "main" si tu rama en gitAccionTest tiene otro nombre
+          git push gitAccionTest new-main  # Cambia "main" si tu rama en gitAccionTest tiene otro nombre
