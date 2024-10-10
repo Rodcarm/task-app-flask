@@ -12,7 +12,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          repository: 'Rodcarm/gitAccionTest' # Correct repository reference
+          repository: 'Rodcarm/task-app-flask' # Correct repository reference
           token: ${{ secrets.API_TOKEN_GITHUB }}
           ref: new-main
           
@@ -20,12 +20,14 @@ jobs:
         run: |
           git config --global user.name "Rodrigo" 
           git config --global user.email "rcarmona@realmetrics.io"
-          
+      - name: Add Remote for gitAccionTest
+        run: |
+          git remote add gitAccionTest https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
       - name: Stage and Commit Changes
         run: |
           git add -A
           git commit -m "Update All" || echo "No changes to commit"
           
-      - name: Push changes
+      - name: Push to gitAccionTest
         run: |
-          git push
+          git push gitAccionTest new-main  # Cambia "main" si tu rama en gitAccionTest tiene otro nombre
