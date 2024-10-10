@@ -16,9 +16,9 @@ jobs:
           git config --global user.email rcarmona@realmetrics.io
       - name: Add Remote
         env:
-          TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git add .
           git commit -m "Automated sync from main repository" || echo "No changes to commit"
-          git remote add secondary https://$TOKEN@github.com/Rodcarm/gitAccionTest.git
+          git remote add secondary https://x-access-token:$GITHUB_TOKEN@github.com/Rodcarm/gitAccionTest.git
           git push -u secondary new-main
