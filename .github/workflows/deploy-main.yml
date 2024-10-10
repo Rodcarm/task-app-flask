@@ -4,11 +4,10 @@ on:
     branches:
       - new-main
 jobs:
-  permissions:
-      contents: write
   sync:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Checkout Source Repository
         uses: actions/checkout@v3        
