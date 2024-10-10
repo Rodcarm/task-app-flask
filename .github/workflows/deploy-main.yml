@@ -4,7 +4,7 @@ on:
     branches:
       - new-main
 jobs:
-  sync-to-secondary-repos:
+  sync:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,5 +21,5 @@ jobs:
         run: |
           git add .
           git commit -m "Automated sync from main repository" || echo "No changes to commit"
-          git remote add secondary https://x-access-token:$TOKEN@github.com/Rodcarm/gitAccionTest.git
-          git push -u secondary new-main
+          git remote add secondary https://x-access-token:$TOKEN@github.com/Rodcarm/task-app-flask.git
+          git push -u secondary test
