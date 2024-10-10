@@ -26,9 +26,7 @@ jobs:
       
       - name: Fetch and Rebase Changes from gitAccionTest
         run: |
-          git fetch gitAccionTest
-          git rebase gitAccionTest/new-main || echo "No changes to rebase"
-
+          git pull
       - name: Stage and Commit Changes
         run: |
           git add -A
