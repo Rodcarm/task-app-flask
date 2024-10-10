@@ -1,0 +1,32 @@
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <p>TASKAPP</p>
+            </a>
+            <a class="navbar-brand" href="{{url_for('index')}}">
+                <img src="{{ url_for('static', filename='images/cat2.png') }}"
+                     style="max-width: 50px"
+                     alt="Michi logo">
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {% if current_user.is_authenticated==False %}
+                    <li><a href="{{url_for('auth.signup')}}">Nuevo usuario</a></li>
+                {% endif %}
+                <li><a href="https://rodrigocarmonabarrios.pythonanywhere.com/" target="_blank">Pagina Personal</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

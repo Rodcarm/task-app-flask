@@ -1,0 +1,24 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v3        
+      - name: Config git
+        run: |
+          git config --global user.name Rodrigo 
+          git config --global user.email rcarmona@realmetrics.io
+      - name: Add Remote
+        env:
+          TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+        run: |
+          git add .
+          git commit -m "esto es un test"
+          git remote add secondary https://$TOKEN@github.com/usuario/Rodcarm/gitAccionTest.git
+          git push -u secundary main
