@@ -20,6 +20,6 @@ jobs:
           curl -H "Authorization: token ${{ secrets.API_TOKEN_GITHUB }}" https://api.github.com/user
       - name: Add Remote
         env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
           git push https://$TOKEN@github.com/Rodcarm/gitAccionTest.git
