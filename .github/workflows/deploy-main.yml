@@ -23,14 +23,12 @@ jobs:
       - name: Add Remote for gitAccionTest
         run: |
           git remote add gitAccionTest https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
-      - name: Fetch Changes from gitAccionTest
+      
+      - name: Fetch and Rebase Changes from gitAccionTest
         run: |
           git fetch gitAccionTest
+          git rebase gitAccionTest/new-main || echo "No changes to rebase"
 
-      - name: Merge Changes from gitAccionTest
-        run: |
-          git checkout new-main
-          git merge gitAccionTest/new-main || echo "No changes to merge"
       - name: Stage and Commit Changes
         run: |
           git add -A
