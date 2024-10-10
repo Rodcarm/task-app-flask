@@ -30,4 +30,4 @@ jobs:
           
       - name: Push to gitAccionTest
         run: |
-          git push gitAccionTest new-main  # Cambia "main" si tu rama en gitAccionTest tiene otro nombre
+          git push gitAccionTest new-main
