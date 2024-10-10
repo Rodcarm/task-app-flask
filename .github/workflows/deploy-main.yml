@@ -20,5 +20,5 @@ jobs:
         run: |
           git add .
           git commit -m "Automated sync from main repository" || echo "No changes to commit"
-          git remote add secondary https://$TOKEN@github.com/usuario/Rodcarm/gitAccionTest.git
+          git remote add secondary https://$TOKEN@github.com/Rodcarm/gitAccionTest.git
           git push -u secondary new-main
