@@ -19,7 +19,8 @@ jobs:
         env:
           TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
+          git remote add secondary https://x-access-token:$TOKEN@github.com/Rodcarm/task-app-flask.git
+          git checkout new-main
           git add .
           git commit -m "Automated sync from main repository" || echo "No changes to commit"
-          git remote add secondary https://x-access-token:$TOKEN@github.com/Rodcarm/task-app-flask.git
-          git push -u secondary test
+          git push -u secondary new-main:test
