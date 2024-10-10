@@ -9,20 +9,23 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Clone Repository
-        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
         with:
-          depth: 1
-          branch: new-main
-          owner: 'Rodcarm'
-          repository: 'gitAccionTest'
-      - name: Access cloned repository contents
+          repository: 'Rodcarm/gitAccionTest' # Correct repository reference
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          ref: new-main
+          
+      - name: Set up Git Configuration
         run: |
-          git config --global user.name Rodrigo 
-          git config --global user.email rcarmona@realmetrics.io
+          git config --global user.name "Rodrigo" 
+          git config --global user.email "rcarmona@realmetrics.io"
+          
+      - name: Stage and Commit Changes
+        run: |
           git add -A
-          git commit -m "Update All"
-      - name: Push Changes
+          git commit -m "Update All" || echo "No changes to commit"
+          
+      - name: Push changes
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
           git push
