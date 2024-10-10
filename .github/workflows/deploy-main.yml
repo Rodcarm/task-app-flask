@@ -26,8 +26,8 @@ jobs:
       
       - name: Fetch and Merge Changes from gitAccionTest
         run: |
-          git fetch gitAccionTest
-          git merge gitAccionTest/new-main || echo "No changes to merge"
+          git pull --rebase origin new-main
+          git push origin new-main
       - name: Stage and Commit Changes
         run: |
           git add -A
@@ -38,10 +38,6 @@ jobs:
       - name: remote
         run: |
           git remote -v
-      - name: Clean and Compress Local Repository
-        run: |
-          git gc --prune=now
-          git repack -a -d --depth=250 --window=250
       - name: Push to gitAccionTest
         run: |
           git push gitAccionTest new-main --force --atomic
