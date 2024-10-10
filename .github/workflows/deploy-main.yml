@@ -4,6 +4,8 @@ on:
     branches:
       - new-main
 jobs:
+  permissions:
+      contents: write
   sync:
     runs-on: ubuntu-latest
 
