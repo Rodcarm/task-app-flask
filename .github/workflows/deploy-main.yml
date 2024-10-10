@@ -4,7 +4,7 @@ on:
     branches:
       - new-main
 jobs:
-  sync:
+  sync-to-secondary-repos:
     runs-on: ubuntu-latest
     permissions:
       contents: write
