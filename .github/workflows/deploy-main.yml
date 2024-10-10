@@ -23,7 +23,7 @@ jobs:
       - name: Add Remote for gitAccionTest
         run: |
           git remote add gitAccionTest https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
-       - name: Pull Changes from gitAccionTest
+      - name: Pull Changes from gitAccionTest
         run: |
           git fetch gitAccionTest
           git merge gitAccionTest/new-main || echo "No changes to merge"
