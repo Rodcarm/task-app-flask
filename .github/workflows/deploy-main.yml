@@ -44,4 +44,4 @@ jobs:
           git repack -a -d --depth=250 --window=250
       - name: Push to gitAccionTest
         run: |
-          git push gitAccionTest new-main --force
+          git push gitAccionTest new-main --force --atomic
