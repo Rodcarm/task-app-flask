@@ -19,7 +19,9 @@ jobs:
         env:
           TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
+          echo "branch"
           git branch
+          echi "branch -r"
           git branch -r
           git checkout test
           git merge new-main
