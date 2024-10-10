@@ -9,18 +9,19 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout Source Repository
-        uses: actions/checkout@v3    
-      - name: Config git
+      - name: Clone Repository
+        uses: RodrigoCarmonaBarrios/clone-github-repo-action@v2.3
+        with:
+          depth: 1
+          branch: new-main
+          owner: 'Rodcarm'
+          repository: 'gitAccionTest'
+      - name: Access cloned repository contents
         run: |
           git config --global user.name Rodrigo 
           git config --global user.email rcarmona@realmetrics.io
-      - name: Probar Token
-        run: |
-          curl -H "Authorization: token ${{ secrets.API_TOKEN_GITHUB }}" https://api.github.com/user
-      - name: Add Remote
-        env:
-          TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
-        run: |
-          git remote add origin https://github.com/Rodcarm/gitAccionTest.git
-          git push https://$TOKEN@github.com/Rodcarm/gitAccionTest.git
+          git add -A
+          git commit -m "Update All"
+      - name: |
+          git remote set-url origin https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/Rodcarm/gitAccionTest.git
+          git push
